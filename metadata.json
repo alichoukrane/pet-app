@@ -1,0 +1,8 @@
+{
+  "name": "PetPal - Professional Pet Care ali",
+  "description": "A comprehensive pet care reminder system with multi-pet profiles, smart scheduling, and AI-powered care advice.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

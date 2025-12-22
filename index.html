@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetPal - Professional Pet Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              // Semantic Colors (Themable)
+              canvas: 'var(--color-bg)',
+              surface: 'var(--color-surface)',
+              main: 'var(--color-text-main)',
+              muted: 'var(--color-text-muted)',
+              border: 'var(--color-border)',
+              
+              // Brand Colors (can be overridden by themes if variable is redefined)
+              brand: {
+                DEFAULT: 'var(--color-brand)',
+                dim: 'var(--color-brand-dim)',
+                glow: 'var(--color-brand-glow)'
+              },
+              accent: {
+                DEFAULT: '#FF5947',
+                dim: '#D14030'
+              },
+              // Palette
+              teal: {
+                50: '#E6FAF9',
+                100: '#C0F4F1',
+                200: '#8AE9E2',
+                300: '#4DD7D0',
+                400: '#26C5C0',
+                500: '#0EA5A4',
+                600: '#0A8484',
+                700: '#086969',
+                800: '#064E4E',
+                900: '#043636',
+              },
+              coral: {
+                50: '#FFE8E6',
+                100: '#FFCFC9',
+                200: '#FF9F96',
+                300: '#FF7D73',
+                400: '#FF6A5E',
+                500: '#FF5947',
+                600: '#EB4D3E',
+                700: '#C63C31',
+                800: '#9E2E27',
+                900: '#7F241E',
+              }
+            },
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+              display: ['Outfit', 'sans-serif'],
+            },
+            borderRadius: {
+              'xl': '0.75rem',
+              '2xl': '1rem',
+              '3xl': '1.5rem',
+            },
+            boxShadow: {
+              'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+              'glow': '0 0 15px var(--color-brand-glow)',
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'bounce-slight': 'bounceSlight 2s infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'shimmer': 'shimmer 2s linear infinite',
+              'slide-in-left': 'slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+              'bounce-once': 'bounceOnce 0.6s ease-in-out',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              bounceSlight: {
+                '0%, 100%': { transform: 'translateY(-2%)' },
+                '50%': { transform: 'translateY(0)' },
+              },
+              shimmer: {
+                '0%': { backgroundPosition: '-200% 0' },
+                '100%': { backgroundPosition: '200% 0' },
+              },
+              slideInLeft: {
+                '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                '100%': { opacity: '1', transform: 'translateX(0)' },
+              },
+              shake: {
+                '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                '30%, 50%, 70%': { transform: 'translate3d(-3px, 0, 0)' },
+                '40%, 60%': { transform: 'translate3d(3px, 0, 0)' }
+              },
+              bounceOnce: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-25%)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      body { 
+        font-family: 'Plus Jakarta Sans', sans-serif; 
+        -webkit-font-smoothing: antialiased;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      .font-premium-display {
+        font-family: 'Outfit', sans-serif;
+      }
+      
+      .text-gradient-premium {
+        background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-accent) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .text-glow-soft {
+        text-shadow: 0 0 30px var(--color-brand-glow);
+      }
+
+      .heading-accent::after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 89, 71, 0.15);
+        border-radius: 4px;
+        z-index: -1;
+      }
+
+      /* Scrollbar utilities */
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      
+      .dark .glass-panel {
+        background: rgba(31, 41, 55, 0.7);
+      }
+      
+      /* --- THEME VARIABLES --- */
+      
+      /* Light (Default) */
+      :root {
+        --color-bg: #F9FAFB;
+        --color-surface: #FFFFFF;
+        --color-text-main: #111827;
+        --color-text-muted: #6B7280;
+        --color-border: #E5E7EB;
+        --color-brand: #0EA5A4;
+        --color-brand-dim: #0A8484;
+        --color-brand-glow: rgba(14, 165, 164, 0.3);
+        --color-accent: #FF5947;
+      }
+      
+      /* Dark */
+      .dark {
+        --color-bg: #111827;
+        --color-surface: #1F2937;
+        --color-text-main: #F9FAFB;
+        --color-text-muted: #9CA3AF;
+        --color-border: #374151;
+        --color-brand: #14B8A6;
+        --color-brand-dim: #0D9488;
+        --color-brand-glow: rgba(20, 184, 166, 0.3);
+      }
+
+      /* Neon Theme (Dark base + Neon accents) */
+      .theme-neon {
+        --color-bg: #09090b;
+        --color-surface: #18181b;
+        --color-text-main: #e2e8f0;
+        --color-text-muted: #94a3b8;
+        --color-border: #27272a;
+        --color-brand: #d946ef; /* Fuchsia Neon */
+        --color-brand-dim: #c026d3;
+        --color-brand-glow: rgba(217, 70, 239, 0.5);
+        --color-accent: #06b6d4; /* Cyan */
+      }
+
+      /* Pastel Theme (Light base + Soft colors) */
+      .theme-pastel {
+        --color-bg: #fdf4ff; /* Very light pink/purple */
+        --color-surface: #ffffff;
+        --color-text-main: #4a044e;
+        --color-text-muted: #86198f;
+        --color-border: #f0abfc;
+        --color-brand: #c084fc; /* Purple */
+        --color-brand-dim: #a855f7;
+        --color-brand-glow: rgba(192, 132, 252, 0.4);
+        --color-accent: #f472b6;
+      }
+
+      /* Pet Theme (Warm/Nature) */
+      .theme-pet {
+        --color-bg: #FFFBEB; /* Amber 50 */
+        --color-surface: #FFFFFF;
+        --color-text-main: #78350F;
+        --color-text-muted: #92400E;
+        --color-border: #FDE68A;
+        --color-brand: #F59E0B; /* Amber */
+        --color-brand-dim: #D97706;
+        --color-brand-glow: rgba(245, 158, 11, 0.3);
+        --color-accent: #10B981;
+      }
+
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.1/",
+    "react/": "https://esm.sh/react@^19.2.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.32.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.10.1",
+    "lucide-react": "https://esm.sh/lucide-react@^0.559.0",
+    "date-fns": "https://esm.sh/date-fns@^4.1.0",
+    "date-fns/": "https://esm.sh/date-fns@^4.1.0/",
+    "i18next": "https://esm.sh/i18next@^23.7.6",
+    "react-i18next": "https://esm.sh/react-i18next@^13.5.0",
+    "react-dom": "https://esm.sh/react-dom@^19.2.3"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
